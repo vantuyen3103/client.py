@@ -17,7 +17,10 @@ class DeviceInfo(dict):
     @property
     def did(self) -> str:
         """Return did."""
-        return str(self["did"])
+        if "black_list_" in str(self["did"]):
+            return str(self["did"]).replace("black_list_","")
+        else:
+            return str(self["did"])
 
     @property
     def name(self) -> str:
